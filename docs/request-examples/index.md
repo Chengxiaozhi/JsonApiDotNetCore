@@ -2,6 +2,8 @@
 
 These requests have been generated against the "GettingStarted" application and are updated on every deployment.
 
+All of these requests have been created using out-of-the-box features.
+
 ## Simple CRUD
 
 ### Create

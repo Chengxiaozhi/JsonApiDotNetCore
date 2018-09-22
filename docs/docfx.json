@@ -23,6 +23,7 @@
                 "files": [
                     "getting-started/**.md",
                     "getting-started/**/toc.yml",
+                    "usage/**.md",
                     "request-examples/**.md",
                     "toc.yml",
                     "*.md"
