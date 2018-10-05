@@ -16,21 +16,9 @@ Eliminate CRUD boilerplate and provide the following features across all your re
 - Sorting
 - Pagination
 - Sparse field selection
-- And more...
-
-As an example, with just the following model and controller definitions, you can service all of the following requests:
-
-```http
-GET /articles HTTP/1.1
-Accept: application/vnd.api+json
-```
-
-[!code-csharp[Article](../src/Examples/GettingStarted/Models/Article.cs)]
-
-[!code-csharp[ArticlesController](../src/Examples/GettingStarted/Controllers/ArticlesController.cs)]
+- Checkout the [example requests](request-examples) to see the kind of features you will get out of the box
 
 ### 2. Extensibility
 
 This library relies heavily on an open-generic-based dependency injection model which allows for easy per-resource customization.
-
 

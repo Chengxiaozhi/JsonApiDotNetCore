@@ -45,7 +45,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResourceEntitySeparationExa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResourceEntitySeparationExampleTests", "test\ResourceEntitySeparationExampleTests\ResourceEntitySeparationExampleTests.csproj", "{6DFA30D7-1679-4333-9779-6FB678E48EF5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GettingStarted", "src\Examples\GettingStarted\GettingStarted.csproj", "{9B2A5AD7-0BF4-472E-A1B4-8BB623FDEB71}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GettingStarted", "src\Examples\GettingStarted\GettingStarted.csproj", "{DF9BFD82-D937-4907-B0B4-64670417115F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscoveryTests", "test\DiscoveryTests\DiscoveryTests.csproj", "{09C0C8D8-B721-4955-8889-55CB149C3B5C}"
 EndProject
