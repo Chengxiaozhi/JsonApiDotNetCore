@@ -135,7 +135,7 @@ dotnet ef migrations add AddPeople
 dotnet ef database update
 ```
 
-### Start the Ap
+### Start the App
 
 ```
 dotnet run

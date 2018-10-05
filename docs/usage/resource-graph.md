@@ -8,7 +8,34 @@ It is built at app startup and available as a singleton through Dependency Injec
 
 ## Constructing The Graph
 
-### Entity Framework
+There are three ways the resource graph can be created:
+
+1. Auto-discovery
+2. Specifying an entire DbContext
+3. Manually specifying each resource
+
+### Auto-Discovery
+
+Auto-discovery refers to process of reflecting on an assembly and 
+detecting all of the json:api resources and services.
+
+The following command will build the context graph using all `IIdentifiable`
+implementations. It also injects service layer overrides which we will 
+cover in a later section. You can enable auto-discovery for the 
+current assembly by adding the following to your `Startup` class.
+
+```c#
+// Startup.cs
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddJsonApi(
+        options => { /* ... */ }, 
+        mvcBuilder,
+        discovery => discovery.AddCurrentAssembly());
+}
+```
+
+### Entity Framework DbContext
 
 If you are using Entity Framework Core as your ORM, you can add an entire `DbContext` with one line.
 
@@ -20,9 +47,9 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-### Defining Non-EF Resources
+### Manual Specification
 
-If you have resources that are not members of a DbContext, you can manually add them to the graph.
+You can also manually construct the graph.
 
 ```c#
 // Startup.cs
@@ -32,36 +59,30 @@ public void ConfigureServices(IServiceCollection services)
 
     services.AddJsonApi(options => {
         options.BuildResourceGraph((builder) => {
-            // MyModel is the internal type
-            // "my-models" is the type alias exposed through the API
-            builder.AddResource<MyModel>("my-models");
+            builder.AddResource<MyModel>();
         });
     }, mvcBuilder);
 }
 ```
 
-### Resource Names
+### Public Resource Type Name
 
-If a `DbContext` is specified when adding the services, the context will be used to define the resources and their names. By default, these names will be hyphenated.
+The public resource type name for is determined by the following criteria (in order of priority):
 
+1. The model is decorated with a `ResourceAttribute`
 ```c#
-public class AppDbContext : DbContext {
-    // this will be translated into "my-models"
-    public DbSet<MyModel> MyModels { get; set; }
-}
+[Resource("my-models")]
+public class MyModel : Identifiable { /* ... */ }
 ```
 
-You can also specify your own resource name.
-
+2. The `DbSet` is decorated with a `ResourceAttribute`
 ```c#
-public class AppDbContext : DbContext {
-    // this will be translated into "someModels"
-    [Resource("someModels")]
-    public DbSet<MyModel> MyModels { get; set; }
-}
+[Resource("my-models")] 
+public DbSet<MyModel> MyModel { get; set; }
 ```
 
-
-
-
-
+3. The configured naming convention (by default this is kebab-case).
+```c#
+// this will be registered as "my-models"
+public class MyModel : Identifiable { /* ... */ }
+```
