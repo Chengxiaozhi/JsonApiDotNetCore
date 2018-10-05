@@ -1,5 +1,4 @@
 using JsonApiDotNetCore.Models;
-
 namespace GettingStarted.Models
 {
     public class Article : Identifiable
