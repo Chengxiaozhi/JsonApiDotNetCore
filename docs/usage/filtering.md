@@ -39,7 +39,10 @@ Accept: application/vnd.api+json
 
 ## Custom Filters
 
-You can customize the filter implementation by overriding the method in the `DefaultEntityRepository`.
+There are two ways you can add custom filters:
+
+1. Creating a `ResourceDefinition` as [described previously](~/usage/resources/resource-definitions.html#custom-query-filters)
+2. Overriding the `DefaultEntityRepository` shown below
 
 ```c#
 public class AuthorRepository : DefaultEntityRepository<Author>

@@ -75,7 +75,7 @@ The public resource type name for is determined by the following criteria (in or
 public class MyModel : Identifiable { /* ... */ }
 ```
 
-2. The `DbSet` is decorated with a `ResourceAttribute`
+2. The `DbSet` is decorated with a `ResourceAttribute`. Note that this only applies if the graph was created from the DbContext (i.e. `services.AddJsonApi<AppDbContext>()`)
 ```c#
 [Resource("my-models")] 
 public DbSet<MyModel> MyModel { get; set; }

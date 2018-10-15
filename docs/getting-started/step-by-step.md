@@ -10,7 +10,6 @@ The shortest path to a running API looks like:
 - Define controllers
 - Add Middleware and Services
 - Seed the database
-- Run Migrations
 - Start the app
 
 This page will walk you through the **simplest** use case. More detailed examples can be found in the detailed usage subsections.
@@ -126,13 +125,6 @@ public void Configure(
     // ...
     app.UseJsonApi();
 }
-```
-
-### Run Migrations
-
-```
-dotnet ef migrations add AddPeople
-dotnet ef database update
 ```
 
 ### Start the App
